@@ -1,22 +1,21 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SignUp from "./pages/signup"
 import SignIn from "./pages/signin"
+import { useEffect } from 'react'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>App</div>
+    element: <SignIn />
   },
   {
     path: "/signup",
     element: <SignUp />
-  },
-  {
-    path: "/signin",
-    element: <SignIn />
   }
 ])
 function App() {
+
+
 
   return (
     <>    
