@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import { useState } from "react"
+import { Container } from "../style/container"
+import {Forms} from "../style/forms"
 
 export default function SignUp(){
 
@@ -34,7 +36,7 @@ export default function SignUp(){
     return (
         <Container>
             <h1>Cadastro</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <Forms onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="name" >Nome:</label>
                 <input type="text" name="name" {...register("name", { required: "insira o nome", maxLength: {value: 50, message: "máximo de 50 caracteres"} })}/>
                 {errors?.name && <small>{errors.name.message}</small>}
@@ -59,36 +61,9 @@ export default function SignUp(){
                 <input type="password" name="ConfirmPassword" {...register("confirmPassword",{ required: "insira a senha", validate: checkPassword})}/>
                 {errors?.confirmPassword && <small>{errors.confirmPassword.message}</small>}
                 <button>Cadastrar</button>
-            </form>
+            </Forms>
             <Link to="/"><small>Entrar</small></Link>
         </Container>
     )
 }
 
-const Container = styled.div`
-    width: 50%;
-    min-height: 500px;
-    background-color: lightgray;
-    border: 1px solid darkgray;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-
-    @media (max-width: 900px) {
-        width: 70%;
-        background-color: lightgray;
-    }
-
-    @media (max-width: 480px) {
-        width: 100%;
-        background-color: lightgray;
-    }
-`

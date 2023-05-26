@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form"
 import { useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { Container } from "../style/container"
+import {Forms} from "../style/forms"
 
 export default function SignIn(){
 
@@ -24,7 +26,7 @@ export default function SignIn(){
     return (
         <Container>
             <h1>Entrar</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <Forms onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="name" >E-mail ou userName:</label>
                 <input type="text" name="email" {...register("locator", { required: "Insira o email/username", maxLength: {value: 50, message: "máximo de 50 caracteres"} } )}/>
                 {errors?.locator && <small>{errors.locator.message}</small>} 
@@ -34,37 +36,9 @@ export default function SignIn(){
                 {errors?.password && <small>{errors.password.message}</small>}
                 {serverError?.errorType === "password" ? <small>{serverError.message}</small> : <></>}
                 <button>Entrar</button>
-            </form>
+            </Forms>
 
             <Link to="/signup"><small>Cadastrar</small></Link>
         </Container>
     )
 }
-
-const Container = styled.div`
-    width: 50%;
-    min-height: 400px;
-    background-color: lightgray;
-    border: 1px solid darkgray;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-
-    @media (max-width: 900px) {
-        width: 70%;
-        background-color: lightgray;
-    }
-
-    @media (max-width: 480px) {
-        width: 100%;
-        background-color: lightgray;
-    }
-`
