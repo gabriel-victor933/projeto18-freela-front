@@ -34,11 +34,13 @@ export default function Header(){
 
     return (
         <Head>
-            <h2>Fomebook</h2>
+            <h2 onClick={()=>navigate("/feed")}>Fomebook</h2>
         
             <div>
                 <p>{user.name}</p>
+                
                 <img src={user.photo}/>
+                
             </div>
         </Head>
     )
@@ -71,7 +73,7 @@ const Head = styled.div`
             border-radius: 50%;
             padding: 1px;
             outline: solid 1px #4e4e4e;
-            margin-left: 15px;
+            margin: 0px 12px;
         }
 
         @media (max-width: 480px) {

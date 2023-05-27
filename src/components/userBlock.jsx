@@ -1,14 +1,14 @@
 import img from "../assets/imgs/perfil.jpg"
 import { styled } from "styled-components"
+import { useNavigate } from "react-router"
 export default function UserBlock({username,photo,id}){
-    console.log(username,photo,id)
     const src = (photo || img)
 
-    console.log(src)
-    return (    
+    const navigate = useNavigate()
+    return (      
         <Block>
-            <img src={src} />
-            <p>{username}</p>
+            <img src={src} onClick={()=>navigate(`/user/${id}`)}/>
+            <p onClick={()=>navigate(`/user/${id}`)}>{username}</p>
         </Block>
     )
 }

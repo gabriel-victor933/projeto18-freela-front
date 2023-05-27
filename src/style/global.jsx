@@ -40,11 +40,15 @@ export const Global = createGlobalStyle`
         font-size: 22px;
     }
     p,label { 
-        font-size: 20px;
+        font-size: 18px;
     }
 
     small {
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+    strong {
+        font-weight: 700;
     }
 
 `

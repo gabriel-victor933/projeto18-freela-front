@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SignUp from "./pages/signup"
 import SignIn from "./pages/signin"
-import { useEffect } from 'react'
 import Post from './pages/post'
 import Feed from './pages/Feed'
+import User from './pages/User'
+import NotFound from './pages/NotFound'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/feed",
     element: <Feed />
+  },
+  {
+    path: "/user/:id",
+    element: <User />
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ])
 function App() {
