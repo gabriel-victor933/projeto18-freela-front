@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import { useParams } from "react-router"
 import UserHome from "../components/UserHome"
 import UserPost from "../components/userPost"
+import FeedButton from "../components/FeedButton"
 
 export default function User(){
 
@@ -11,6 +12,7 @@ export default function User(){
     return(
         <>
             <Header />
+            <FeedButton />
             <UserHome id={id}/>
             <UserPost id={id}/>
         </>

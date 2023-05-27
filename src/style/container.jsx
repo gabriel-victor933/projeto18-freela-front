@@ -7,9 +7,9 @@ export const Container = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    padding-bottom: 20px;
-    margin-top: 65px;
+    padding: 13px;
+    
+    margin-top: 10px;
 
     @media (max-width: 900px) {
         width: 70%;

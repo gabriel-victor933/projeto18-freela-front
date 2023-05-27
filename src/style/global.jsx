@@ -13,7 +13,8 @@ export const Global = createGlobalStyle`
 
     body,#root {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         font-family: "Source Sans Pro", "sans-seriff";
         color: black;
         margin: 0px;
@@ -23,7 +24,7 @@ export const Global = createGlobalStyle`
     #root{
 
         width: 100%;
-        padding-top: 30px;
+        padding-top: 90px;
     }
 
     h1 { 

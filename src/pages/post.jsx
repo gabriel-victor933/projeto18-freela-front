@@ -6,6 +6,7 @@ import axios from "axios"
 import SucessPost from "../components/sucessPost"
 import FailurePost from "../components/failurePost"
 import Header from "../components/Header"
+import FeedButton from "../components/FeedButton"
 
 export default function Post(){
 
@@ -33,6 +34,7 @@ export default function Post(){
     return (
         <>
         <Header />
+        <FeedButton />
        <Container>
             {!postState.finalized && <Forms onSubmit={handleSubmit(onSubmit)}>
                 <h3>Titulo</h3>
