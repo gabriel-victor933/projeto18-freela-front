@@ -2,13 +2,13 @@ import {styled} from "styled-components"
 
 export const Container = styled.div`
     width: 50%;
-    min-height: 500px;
     background-color: lightgray;
     border: 1px solid darkgray;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 15px;
+    padding-bottom: 20px;
     margin-top: 70px;
 
     @media (max-width: 900px) {
