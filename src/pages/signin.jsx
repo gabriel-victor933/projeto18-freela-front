@@ -19,7 +19,10 @@ export default function SignIn(){
             localStorage.setItem("token",res.data.token)
         })
         .catch((err)=>{
+            
             setServerError(err.response?.data)
+
+            if(!err.response) alert(err.message)
         })
     }
 
