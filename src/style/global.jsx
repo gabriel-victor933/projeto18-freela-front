@@ -17,6 +17,7 @@ export const Global = createGlobalStyle`
         font-family: "Source Sans Pro", "sans-seriff";
         color: black;
         margin: 0px;
+        
     }
 
     #root{
@@ -35,7 +36,7 @@ export const Global = createGlobalStyle`
     h3 { 
         font-size: 26px;
     }
-    h4, { 
+    h4 { 
         font-size: 22px;
     }
     p,label { 

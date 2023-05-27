@@ -3,6 +3,7 @@ import SignUp from "./pages/signup"
 import SignIn from "./pages/signin"
 import { useEffect } from 'react'
 import Post from './pages/post'
+import Feed from './pages/Feed'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/post",
     element: <Post />
+  },
+  {
+    path: "/feed",
+    element: <Feed />
   }
 ])
 function App() {

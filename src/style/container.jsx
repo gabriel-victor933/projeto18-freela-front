@@ -12,11 +12,9 @@ export const Container = styled.div`
 
     @media (max-width: 900px) {
         width: 70%;
-        background-color: lightgray;
     }
 
     @media (max-width: 480px) {
         width: 100%;
-        background-color: lightgray;
     }
 `
