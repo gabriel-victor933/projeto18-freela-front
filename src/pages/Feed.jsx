@@ -1,6 +1,6 @@
 import Header from "../components/Header"
 import Search from "../components/Search"
-import SearchButton from "../components/SearchButton"
+import PostButton from "../components/postButton"
 
 export default function Feed(){
     
@@ -9,7 +9,7 @@ export default function Feed(){
         <Header />
         <Search />
         <div>Feed</div>
-        <SearchButton />
+        <PostButton />
         </>
     )
 }

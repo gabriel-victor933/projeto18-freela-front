@@ -1,7 +1,7 @@
 import {BiPencil} from "react-icons/bi";
 import { useNavigate } from "react-router";
 
-export default function SearchButton(){
+export default function PostButton(){
     const navigate = useNavigate()
 
     return (
