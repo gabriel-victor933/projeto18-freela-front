@@ -9,7 +9,7 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 15px;
     padding-bottom: 20px;
-    margin-top: 70px;
+    margin-top: 65px;
 
     @media (max-width: 900px) {
         width: 70%;

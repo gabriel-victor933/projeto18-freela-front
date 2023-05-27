@@ -24,12 +24,18 @@ export default function Header(){
             if(!photo) photo = img
             setUser({name,photo})
         })
+        .catch((err)=>{
+            
+            if(!err.response) alert(err.message)
+        })
 
     },[])
+
 
     return (
         <Head>
             <h2>Fomebook</h2>
+        
             <div>
                 <p>{user.name}</p>
                 <img src={user.photo}/>
@@ -48,7 +54,7 @@ const Head = styled.div`
     background-color: lightgray;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.82);
     
 
@@ -76,4 +82,3 @@ const Head = styled.div`
 `
 
 
-const url = "https://miro.medium.com/v2/resize:fit:1400/1*g09N-jl7JtVjVZGcd-vL2g.jpeg"
