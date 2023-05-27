@@ -14,6 +14,8 @@ export default function SignUp(){
 
 
     const onSubmit = (data) =>{
+
+        if(!data.biography) delete data.biography
         
         axios.post(`${import.meta.env.VITE_API_URL}/signup`,data)
         .then((res)=>{

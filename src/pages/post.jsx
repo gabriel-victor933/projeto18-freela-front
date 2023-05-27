@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form"
 import axios from "axios"
 import SucessPost from "../components/sucessPost"
 import FailurePost from "../components/failurePost"
+import Header from "../components/Header"
 
 export default function Post(){
 
@@ -30,6 +31,8 @@ export default function Post(){
     }
 
     return (
+        <>
+        <Header />
        <Container>
             {!postState.finalized && <Forms onSubmit={handleSubmit(onSubmit)}>
                 <h3>Titulo</h3>
@@ -51,6 +54,7 @@ export default function Post(){
 
             {!(postState.sucess == false && postState.finalized==true) ? <></> :<FailurePost setPostState={setPostState}/>  }
        </Container>
+       </>
     )
 }
 

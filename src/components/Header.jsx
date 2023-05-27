@@ -1,18 +1,38 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { styled } from "styled-components"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import img from "../assets/imgs/perfil.jpg"
 
 export default function Header(){
 
+    const navigate = useNavigate()
+
+    const [user,setUser] = useState({name:"",photo:""})
+
+    const config = {headers: 
+        {Authorization: `Bearer ${localStorage.getItem("token")}`}}
+
     useEffect(()=>{
-        //pegar infos do usuario.
+
+        if(!localStorage.getItem("token")) navigate("/")
+        
+        axios.get(`${import.meta.env.VITE_API_URL}/`,config)
+        .then((res)=>{
+            
+            let {name,photo} = res.data
+            if(!photo) photo = img
+            setUser({name,photo})
+        })
+
     },[])
 
     return (
         <Head>
             <h2>Fomebook</h2>
             <div>
-                <h4>name</h4>
-                <img src={url}/>
+                <p>{user.name}</p>
+                <img src={user.photo}/>
             </div>
         </Head>
     )
@@ -28,6 +48,8 @@ const Head = styled.div`
     background-color: lightgray;
     position: fixed;
     top: 0;
+    z-index: 1;
+    box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.82);
     
 
     div {

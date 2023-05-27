@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 import {useForm} from "react-hook-form"
 import { useState } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Container } from "../style/container"
 import {Forms} from "../style/forms"
 
@@ -10,6 +10,7 @@ export default function SignIn(){
 
     const {register, handleSubmit, formState: { errors }} = useForm()
     const [serverError,setServerError] = useState({errorType:"",message:""})
+    const navigate = useNavigate()
 
     const onSubmit = (data) =>{
         
@@ -17,6 +18,7 @@ export default function SignIn(){
         .then((res)=>{
            
             localStorage.setItem("token",res.data.token)
+            navigate("/feed")
         })
         .catch((err)=>{
             
