@@ -2,13 +2,14 @@ import { styled } from "styled-components"
 import { Container } from "../style/container"
 import img from "../assets/imgs/perfil.jpg"
 import {SlUserFollow, SlUserFollowing, SlUserUnfollow} from "react-icons/sl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
 export default function UserHome({id}){
 
-    const [user,setUser] = useState({})
+    const [userState,setUserState] = useState({})
+    const userRef = useRef()
     const navigate = useNavigate()
 
     const config = {headers: 
@@ -21,10 +22,19 @@ export default function UserHome({id}){
     function getUser(){
         axios.get(`${import.meta.env.VITE_API_URL}/user/${id}`,config)
         .then((res)=>{
+
+            
             if(res.data.photo){
-                setUser(res.data)
+                const {biography,id,photo,username} = res.data
+                userRef.current = {biography,id,photo,username}
+                const {isfollowing,seguidores,seguindo} = res.data
+                setUserState({isfollowing,seguidores,seguindo})
             } else {
-                setUser({...res.data, photo: img})
+                
+                const {biography,id,username} = res.data
+                userRef.current = {biography,id,photo: img,username}
+                const {isfollowing,seguidores,seguindo} = res.data
+                setUserState({isfollowing,seguidores,seguindo})
             }
             
         })
@@ -35,20 +45,47 @@ export default function UserHome({id}){
         })
     }
 
+    function followUser(){
+        const data = {}
+        axios.post(`${import.meta.env.VITE_API_URL}/follow/${id}`,data,config)
+        .then((res)=>{
+            const novo = parseInt(userState.seguidores) + 1;
+            setUserState({...userState, isfollowing: "1",seguidores: novo})
+        })
+        .catch((err)=>{
+            console.log(err)
+            if(!err.response) alert(err.message)
+            getUser()
+        })
+    }
+    
+    function removeFollow(){
+        
+        axios.delete(`${import.meta.env.VITE_API_URL}/follow/${id}`,config)
+        .then((res)=>{
+            const novo = parseInt(userState.seguidores) - 1;
+            setUserState({...userState, isfollowing: "0",seguidores: novo})
+        })
+        .catch((err)=>{
+            console.log(err)
+            if(!err.response) alert(err.message)
+            getUser()
+        })
+    }
 
     return (
         <Container>
             <Home>
-                <div>
-                <img src={user?.photo}/>
-                <h3>{user?.username}</h3>
-                {user.isfollowing == "1" ? <SlUserFollowing size="25px"/> :<SlUserFollow size="25px"/>}
+            <div>
+                <img src={userRef.current?.photo}/>
+                <h3>{userRef.current?.username}</h3>
+                {userState.isfollowing == "1" ? <SlUserFollowing size="25px" onClick={removeFollow}/> :<SlUserFollow size="25px" onClick={followUser}/>}
                 </div>
                 <div>
-                <p>{user?.biography}</p>
+                <p>{userRef.current?.biography}</p>
                 </div>
-                <small>{user?.seguidores} <strong>seguidores</strong></small>
-                <small>{user?.seguindo} <strong>seguindo</strong></small>
+                <small>{userState?.seguidores} <strong>seguidores</strong></small>
+                <small>{userState?.seguindo} <strong>seguindo</strong></small> 
             </Home>
         </Container>
     )
