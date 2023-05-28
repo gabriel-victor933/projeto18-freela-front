@@ -42,7 +42,7 @@ export default function UserProfile(){
                 <div>
                 <img src={user?.photo}/>
                 <h3>{user?.username}</h3>
-                <SlWrench size="25px"/>
+                <SlWrench size="25px" onClick={()=>navigate("/edit")}/>
                 </div>
                 <div>
                 <p>{user?.biography}</p>

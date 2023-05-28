@@ -5,6 +5,7 @@ import Post from './pages/post'
 import Feed from './pages/Feed'
 import User from './pages/User'
 import NotFound from './pages/NotFound'
+import Edit from './pages/Edit'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />
+  },
+  {
+    path: "/edit",
+    element: <Edit />
   }
   
 ])
