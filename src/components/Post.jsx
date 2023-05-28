@@ -5,7 +5,6 @@ import {AiOutlineLike,AiFillLike, AiOutlineComment} from "react-icons/ai";
 
 export default function Post({post}){
 
-    console.log(post)
 
     return(
         <Container>
