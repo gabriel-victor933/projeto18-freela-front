@@ -2,7 +2,7 @@ import {CiSearch} from "react-icons/ci"
 import {AiOutlineClose} from "react-icons/ai"
 import { Container } from "../style/container"
 import { styled } from "styled-components"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import UserBlock from "./userBlock"
 
@@ -14,6 +14,18 @@ export default function Search(){
 
     const config = {headers: 
         {Authorization: `Bearer ${localStorage.getItem("token")}`}}
+
+    useEffect(()=>{
+
+        function handlePress(e){
+            if(e.key == "Enter") handleSearch()
+        }
+        document.addEventListener("keydown",handlePress)
+
+        return ()=>{
+            document.removeEventListener("keydown",handlePress)
+        }
+    },[])
 
     function handleSearch(){
         if(!searchRef.current.username) return
