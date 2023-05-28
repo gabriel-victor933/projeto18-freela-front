@@ -28,9 +28,14 @@ const router = createBrowserRouter([
     element: <User />
   },
   {
+    path: "/me",
+    element: <User />
+  },
+  {
     path: "*",
     element: <NotFound />
   }
+  
 ])
 function App() {
 

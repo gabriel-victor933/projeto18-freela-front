@@ -39,7 +39,7 @@ export default function Header(){
             <div>
                 <p>{user.name}</p>
                 
-                <img src={user.photo}/>
+                <img src={user.photo} onClick={()=> navigate("/me")}/>
                 
             </div>
         </Head>
