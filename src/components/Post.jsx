@@ -9,7 +9,6 @@ export default function Post({post}){
 
     const [likeState,setLikeState] = useState(post.isliked === "1")
     const [likeNumber,setLikeNumber] = useState(parseInt(post.like))
-    console.log(likeNumber)
 
     const config = {headers: 
         {Authorization: `Bearer ${localStorage.getItem("token")}`}}

@@ -6,6 +6,7 @@ import Feed from './pages/Feed'
 import User from './pages/User'
 import NotFound from './pages/NotFound'
 import Edit from './pages/Edit'
+import PostView from './pages/PostView'
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,12 @@ const router = createBrowserRouter([
   {
     path: "/edit",
     element: <Edit />
+  },
+  {
+    path: "/post/:id",
+    element: <PostView />
   }
+  
   
 ])
 function App() {

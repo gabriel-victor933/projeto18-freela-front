@@ -11,7 +11,7 @@ export default function PostButton(){
 }
 
 const styleObject = {
-    
+
     color: "black",
     position:"fixed",
     bottom: "50px",
