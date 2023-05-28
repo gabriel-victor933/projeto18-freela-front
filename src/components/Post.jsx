@@ -3,12 +3,37 @@ import {styled} from "styled-components"
 import img from "../assets/imgs/perfil.jpg"
 import {AiOutlineLike,AiFillLike, AiOutlineComment} from "react-icons/ai";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Post({post}){
 
     const [likeState,setLikeState] = useState(post.isliked === "1")
+    const [likeNumber,setLikeNumber] = useState(parseInt(post.like))
+    console.log(likeNumber)
+
+    const config = {headers: 
+        {Authorization: `Bearer ${localStorage.getItem("token")}`}}
 
     function handleLikeClick(){
+
+        if(!likeState){
+            setLikeNumber(likeNumber + 1)
+            axios.post(`${import.meta.env.VITE_API_URL}/like/${post.id}`,{},config)
+            .catch((err)=>{
+                console.log(err)
+                
+                setLikeState((prev)=> !prev)
+            })
+        } else {
+            setLikeNumber(likeNumber - 1)
+            axios.delete(`${import.meta.env.VITE_API_URL}/like/${post.id}`,config)
+            .catch((err)=>{
+                console.log(err)
+                setLikeState((prev)=> !prev)
+                
+            })
+        }
+
         setLikeState((prev)=> !prev)
     }
 
@@ -27,7 +52,7 @@ export default function Post({post}){
                     <h3>{post.title}</h3>
                     <p>{post.description}</p>
                     <div className="postInfos">
-                        <small>{post.like} <strong>likes</strong></small>
+                        <small>{likeNumber} <strong>likes</strong></small>
                         <small>{post.comment} <strong>comments</strong></small>
                        {likeState ? <AiFillLike size="25px" onClick={handleLikeClick}/> : <AiOutlineLike size="25px" onClick={handleLikeClick}/>}
                         <AiOutlineComment size="25px"/>
