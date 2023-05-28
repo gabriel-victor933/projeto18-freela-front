@@ -25,6 +25,7 @@ export const Global = createGlobalStyle`
 
         width: 100%;
         padding-top: 90px;
+        padding-bottom: 30px;
     }
 
     h1 { 

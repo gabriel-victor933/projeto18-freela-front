@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SignUp from "./pages/signup"
 import SignIn from "./pages/signin"
-import Post from './pages/post'
+import PostForm from './pages/postForm'
 import Feed from './pages/Feed'
 import User from './pages/User'
 import NotFound from './pages/NotFound'
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/post",
-    element: <Post />
+    element: <PostForm />
   },
   {
     path: "/feed",

@@ -8,7 +8,7 @@ import FailurePost from "../components/failurePost"
 import Header from "../components/Header"
 import FeedButton from "../components/FeedButton"
 
-export default function Post(){
+export default function PostForm(){
 
     const [postState,setPostState] = useState({loading: false,finalized:false,sucess: false})
 
