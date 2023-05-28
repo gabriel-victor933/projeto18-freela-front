@@ -2,9 +2,15 @@ import { Container } from "../style/container";
 import {styled} from "styled-components"
 import img from "../assets/imgs/perfil.jpg"
 import {AiOutlineLike,AiFillLike, AiOutlineComment} from "react-icons/ai";
+import { useState } from "react";
 
 export default function Post({post}){
 
+    const [likeState,setLikeState] = useState(post.isliked === "1")
+
+    function handleLikeClick(){
+        setLikeState((prev)=> !prev)
+    }
 
     return(
         <Container>
@@ -23,7 +29,7 @@ export default function Post({post}){
                     <div className="postInfos">
                         <small>{post.like} <strong>likes</strong></small>
                         <small>{post.comment} <strong>comments</strong></small>
-                        <AiOutlineLike size="25px"/>
+                       {likeState ? <AiFillLike size="25px" onClick={handleLikeClick}/> : <AiOutlineLike size="25px" onClick={handleLikeClick}/>}
                         <AiOutlineComment size="25px"/>
                     </div>
                 </div>
