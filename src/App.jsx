@@ -7,6 +7,7 @@ import User from './pages/User'
 import NotFound from './pages/NotFound'
 import Edit from './pages/Edit'
 import PostView from './pages/PostView'
+import Header from './components/Header'
 
 const router = createBrowserRouter([
   {
@@ -19,19 +20,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/post",
-    element: <PostForm />
+    element: <><Header /><PostForm /></>
   },
   {
     path: "/feed",
-    element: <Feed />
+    element: <><Header /><Feed /></>
   },
   {
     path: "/user/:id",
-    element: <User />
+    element: <><Header /><User /></>
   },
   {
     path: "/me",
-    element: <User />
+    element: <><Header /><User /></>
   },
   {
     path: "*",
@@ -39,11 +40,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit",
-    element: <Edit />
+    element: <><Header /><Edit /></>
   },
   {
     path: "/post/:id",
-    element: <PostView />
+    element: <><Header /><PostView /></>
   }
   
   

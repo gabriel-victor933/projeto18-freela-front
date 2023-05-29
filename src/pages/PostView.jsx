@@ -45,7 +45,6 @@ export default function PostView(){
 
     return (
         <>
-            <Header />
             <FeedButton />
             {post && <Post post={post}/>}
             <Comment id={post?.id} config={config} loadComments={getComments}/>

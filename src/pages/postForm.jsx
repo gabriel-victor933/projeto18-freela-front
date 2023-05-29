@@ -31,7 +31,6 @@ export default function PostForm(){
 
     return (
         <>
-        <Header />
         <FeedButton />
        <Container>
             {!postState.finalized && <Forms onSubmit={handleSubmit(onSubmit)}>

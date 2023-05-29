@@ -15,7 +15,6 @@ export default function User(){
 
     return(
         <>
-            <Header />
             <FeedButton />
             {test.pathname !== "/me" ? 
             <> <UserHome id={id}/><UserPost id={id}/></> : <><UserProfile /><UserProfilePost /> </>}
