@@ -19,8 +19,7 @@ export default function User(){
             <FeedButton />
             {test.pathname !== "/me" ? 
             <> <UserHome id={id}/><UserPost id={id}/></> : <><UserProfile /><UserProfilePost /> </>}
-            
-            
+        
             <PostButton />
         </>
     )

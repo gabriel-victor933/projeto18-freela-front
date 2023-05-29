@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import Comments from "../components/Comments"
 import Comment from "../components/Comment"
+import FeedButton from "../components/FeedButton"
 
 export default function PostView(){
 
@@ -45,6 +46,7 @@ export default function PostView(){
     return (
         <>
             <Header />
+            <FeedButton />
             {post && <Post post={post}/>}
             <Comment id={post?.id} config={config} loadComments={getComments}/>
             {comments?.map((comment) => <Comments comment={comment}/>)}

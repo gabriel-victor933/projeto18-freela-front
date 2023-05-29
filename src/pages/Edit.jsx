@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Container } from "../style/container"
 import {Forms} from "../style/forms"
 import Header from "../components/Header"
+import FeedButton from "../components/FeedButton"
 
 export default function Edit(){
 
@@ -48,6 +49,7 @@ export default function Edit(){
     
     return (
         <>
+        <FeedButton />
         <Header />
         <Container>
             <h2>Editar perfil</h2>

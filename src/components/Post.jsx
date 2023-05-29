@@ -4,6 +4,7 @@ import img from "../assets/imgs/perfil.jpg"
 import {AiOutlineLike,AiFillLike, AiOutlineComment} from "react-icons/ai";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Post({post}){
 
@@ -35,14 +36,16 @@ export default function Post({post}){
 
         setLikeState((prev)=> !prev)
     }
-
+    console.log(post)
     return(
         <Container>
             <Block>
+                <Link to={`/user/${post.userid}`}>
                 <div className="userInfos">
                     <img src={post.userphoto || img}/>
                     <h4>{post.username}</h4>
                 </div>
+                </Link>
                 <img src={post.photo}/>
                 <div>
 
@@ -54,7 +57,7 @@ export default function Post({post}){
                         <small>{likeNumber} <strong>likes</strong></small>
                         <small>{post.comment} <strong>comments</strong></small>
                        {likeState ? <AiFillLike size="25px" onClick={handleLikeClick}/> : <AiOutlineLike size="25px" onClick={handleLikeClick}/>}
-                        <AiOutlineComment size="25px"/>
+                        <Link to={`/post/${post.id}`}><AiOutlineComment size="25px"/></Link>
                     </div>
                 </div>
 
@@ -65,13 +68,17 @@ export default function Post({post}){
 
 const Block = styled.div`
     width: 100%;
-    
+    a{
+            text-decoration: none;
+            color: black;
+        }
 
     .userInfos{
         display: flex;
         align-items: center;
         gap: 10px;
         margin: 5px 0px;
+        
         img {
             width: 40px;
             height: 40px;
