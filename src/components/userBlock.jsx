@@ -19,7 +19,7 @@ const Block = styled.div`
     width: 100%;
     height: 65px;
     padding: 10px 0px;
-    border-top: 1px solid #a3a3a3;
+    border-top: 1px solid #ADC2A9;
     
     
     
@@ -29,7 +29,7 @@ const Block = styled.div`
         width: 50px;
         margin-right: 10px;
         border-radius: 50%;
-
+        border-top: 1px solid #99A799;
         &:hover {
         cursor: pointer;
     }

@@ -95,12 +95,12 @@ const Input = styled.div`
     .users {
         min-height: 50px;
         width: calc(100% + 30px);
-        background-color: black;
+        
         position: absolute;
         top: 55px;
         left: -15px;
         z-index: 2;
-        background-color: lightgray;
+        background-color: #D3E4CD;
         border: 1px solid darkgray;
         border-radius: 10px;
         padding: 15px;
