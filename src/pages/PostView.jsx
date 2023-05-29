@@ -49,7 +49,7 @@ export default function PostView(){
             <FeedButton />
             {post && <Post post={post}/>}
             <Comment id={post?.id} config={config} loadComments={getComments}/>
-            {comments?.map((comment) => <Comments comment={comment}/>)}
+            {comments?.map((comment) => <Comments key={comment.id} comment={comment}/>)}
         </>
     )
 }

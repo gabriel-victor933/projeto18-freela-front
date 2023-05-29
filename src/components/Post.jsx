@@ -36,7 +36,6 @@ export default function Post({post}){
 
         setLikeState((prev)=> !prev)
     }
-    console.log(post)
     return(
         <Container>
             <Block>

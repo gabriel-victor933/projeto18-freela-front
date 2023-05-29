@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import img from "../assets/imgs/perfil.jpg"
+import {RxExit} from "react-icons/rx"
 
 export default function Header(){
 
@@ -31,6 +32,11 @@ export default function Header(){
 
     },[])
 
+    function handleExit(){
+        localStorage.removeItem("token")
+        navigate("/")
+    }
+
 
     return (
         <Head>
@@ -40,7 +46,7 @@ export default function Header(){
                 <p>{user.name}</p>
                 
                 <img src={user.photo} onClick={()=> navigate("/me")}/>
-                
+                <RxExit onClick={handleExit}/>
             </div>
         </Head>
     )

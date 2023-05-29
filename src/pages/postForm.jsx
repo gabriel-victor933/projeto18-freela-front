@@ -21,12 +21,10 @@ export default function PostForm(){
 
         axios.post(`${import.meta.env.VITE_API_URL}/post`,data,config)
         .then((res)=>{
-            console.log(res)
             setPostState({loading: false,finalized:true,sucess: true})
             reset()
         })
         .catch((err)=>{
-            console.log(err)
             setPostState({loading: false,finalized:true,sucess: false})
         })
     }
