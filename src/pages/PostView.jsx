@@ -12,6 +12,8 @@ export default function PostView(){
     const navigate = useNavigate()
 
     const [post, setPost] = useState(undefined)
+    const [comments, setComments] = useState(undefined)
+
 
     const config = {headers: 
         {Authorization: `Bearer ${localStorage.getItem("token")}`}}
@@ -26,12 +28,26 @@ export default function PostView(){
         })
     },[])
 
+    useEffect(()=>{
+        getComments()
+    },[])
+
+    function getComments(){
+        axios.get(`${import.meta.env.VITE_API_URL}/post/${id}/comments`,config)
+        .then((res)=>{
+            setComments(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <>
             <Header />
             {post && <Post post={post}/>}
-            <Comment />
-            <Comments />
+            <Comment id={post?.id} config={config} loadComments={getComments}/>
+            {comments?.map((comment) => <Comments comment={comment}/>)}
         </>
     )
 }

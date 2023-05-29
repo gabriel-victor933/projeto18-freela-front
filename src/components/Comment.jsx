@@ -1,14 +1,30 @@
 import { styled } from "styled-components"
 import { Container } from "../style/container"
 import {BsSend, BsSnapchat} from "react-icons/bs"
+import { useRef } from "react"
+import axios from "axios"
 
-export default function Comment(){
+export default function Comment({id,config, loadComments}){
+
+    const commentRef = useRef()
+
+    function handleClick(){
+        if(!commentRef.current) return
+        axios.post(`${import.meta.env.VITE_API_URL}/post/${id}/comments`,{comment: commentRef.current},config)
+        .then((res)=>{
+            console.log(res)
+            loadComments()
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
     return (
         <Container>
             <Block>
-                <input placeholder="Escreva seu comentário!"/>
-                <BsSend className="icon" size="20px"/>
+                <input placeholder="Escreva seu comentário!" onChange={(e) => commentRef.current = e.target.value}/>
+                <BsSend className="icon" size="20px" onClick={handleClick}/>
             </Block>
         </Container>
     )
