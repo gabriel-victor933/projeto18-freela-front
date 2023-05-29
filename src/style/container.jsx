@@ -2,8 +2,8 @@ import {styled} from "styled-components"
 
 export const Container = styled.div`
     width: 50%;
-    background-color: lightgray;
-    border: 1px solid darkgray;
+    background-color: #D3E4CD;
+    border: 1px solid #99A799;
     border-radius: 10px;
     display: flex;
     flex-direction: column;

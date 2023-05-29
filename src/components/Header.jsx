@@ -59,7 +59,7 @@ const Head = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: lightgray;
+    background-color: #D3E4CD;
     position: fixed;
     top: 0;
     z-index: 10;

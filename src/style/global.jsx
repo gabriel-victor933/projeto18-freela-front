@@ -18,6 +18,7 @@ export const Global = createGlobalStyle`
         font-family: "Source Sans Pro", "sans-seriff";
         color: black;
         margin: 0px;
+        background-color: #FEF5ED;
         
     }
 

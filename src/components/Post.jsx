@@ -54,7 +54,7 @@ export default function Post({post}){
                     <p>{post.description}</p>
                     <div className="postInfos">
                         <small>{likeNumber} <strong>likes</strong></small>
-                        <small>{post.comment} <strong>comments</strong></small>
+                        <small>{post.comment} <strong><Link to={`/post/${post.id}`}>comments</Link></strong></small>
                        {likeState ? <AiFillLike size="25px" onClick={handleLikeClick}/> : <AiOutlineLike size="25px" onClick={handleLikeClick}/>}
                         <Link to={`/post/${post.id}`}><AiOutlineComment size="25px"/></Link>
                     </div>
@@ -82,7 +82,9 @@ const Block = styled.div`
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            padding: 0px
+            padding: 0px;
+            border: 1px solid #99A799;
+            
         }
     }
 
@@ -108,6 +110,7 @@ const Block = styled.div`
         width: 100%;
         max-height: 700px;
         padding: 10px 0px;
+        filter: drop-shadow(0px 0px 3px #99A799);
     }
     
 `
