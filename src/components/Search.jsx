@@ -8,7 +8,6 @@ import UserBlock from "./userBlock"
 
 export default function Search(){
 
-    const searchRef = useRef({username:"",page:1})
     const [users,setUsers] = useState([])
     const [searchBox,setSearchBox] = useState(false)
 
@@ -27,12 +26,11 @@ export default function Search(){
         }
     },[])
 
-    function handleSearch(){
-        if(!searchRef.current.username) return
+    function handleSearch(e){
+        if(!e.target.value) return
 
-        const {username,page} = searchRef.current
 
-        axios.get(`${import.meta.env.VITE_API_URL}/users?search=${username}&page=${page}`,config)
+        axios.get(`${import.meta.env.VITE_API_URL}/users?search=${e.target.value}`,config)
         .then((res)=>{
             setUsers(res.data)
             setSearchBox(true)
@@ -48,7 +46,7 @@ export default function Search(){
     return (
         <Container>
             <Input>
-                <input type="text" onChange={(e)=> searchRef.current.username = e.target.value} required/>
+                <input type="text" onChange={handleSearch} required/>
                 <CiSearch className="icon" size="25px" onClick={handleSearch}/>
                 
                 {searchBox && <>{users.length !== 0 && <div className="users">
