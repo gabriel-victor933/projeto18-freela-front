@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Header from "../components/Header"
 import Search from "../components/Search"
 import PostButton from "../components/postButton"
 import axios from "axios"

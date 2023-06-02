@@ -1,38 +1,47 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { lazy,Suspense } from 'react'
 import SignUp from "./pages/signup"
 import SignIn from "./pages/signin"
-import PostForm from './pages/postForm'
 import Feed from './pages/Feed'
-import User from './pages/User'
 import NotFound from './pages/NotFound'
-import Edit from './pages/Edit'
-import PostView from './pages/PostView'
 import Header from './components/Header'
+import Loading from './components/Loading'
+const User = lazy(() => import('./pages/User.jsx'))
+const PostForm = lazy(() => import('./pages/postForm.jsx'))
+const Edit = lazy(() => import('./pages/Edit.jsx'))
+const PostView = lazy(() => import('./pages/PostView.jsx'))
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SignIn />
+    element: <SignIn />,
+    errorElement: <NotFound />
   },
   {
     path: "/signup",
-    element: <SignUp />
+    element: <SignUp />,
+    errorElement: <NotFound />
   },
   {
     path: "/post",
-    element: <><Header /><PostForm /></>
+    element: <><Header /><PostForm /></>,
+    errorElement: <NotFound />
   },
   {
     path: "/feed",
-    element: <><Header /><Feed /></>
+    element: <><Header /><Feed /></>,
+    errorElement: <NotFound />
   },
   {
     path: "/user/:id",
-    element: <><Header /><User /></>
+    element: <><Header /><User /></>,
+    errorElement: <NotFound />
   },
   {
     path: "/me",
-    element: <><Header /><User /></>
+    element: <><Header /><User /></>,
+    errorElement: <NotFound />
   },
   {
     path: "*",
@@ -40,11 +49,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit",
-    element: <><Header /><Edit /></>
+    element: <><Header /><Edit /></>,
+    errorElement: <NotFound />
   },
   {
     path: "/post/:id",
-    element: <><Header /><PostView /></>
+    element: <><Header /><PostView /></>,
+    errorElement: <NotFound />
   }
   
   
@@ -54,8 +65,10 @@ function App() {
 
 
   return (
-    <>    
-      <RouterProvider router={router} />
+    <> 
+      <Suspense fallback={<Loading />}>   
+        <RouterProvider router={router} />
+      </Suspense>
     </>
 
   )
