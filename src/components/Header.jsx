@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import img from "../assets/imgs/perfil.jpg"
 import {RxExit} from "react-icons/rx"
+import logo from "../assets/imgs/logo_fakebook.webp"
 
 export default function Header(){
 
@@ -40,7 +41,7 @@ export default function Header(){
 
     return (
         <Head>
-            <h2 onClick={()=>navigate("/feed")}>Fomebook</h2>
+            <img onClick={()=>navigate("/feed")} src={logo} className="logo"/>
         
             <div>
                 <p>{user.name}</p>
@@ -64,6 +65,11 @@ const Head = styled.div`
     top: 0;
     z-index: 10;
     box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.82);
+
+    .logo {
+        width: 200px;
+        
+    }
     
 
     div {
@@ -86,6 +92,13 @@ const Head = styled.div`
         h4{display: none}
         }
     }
+
+    @media (max-width: 480px) {
+        
+        .logo {
+            width: 120px;
+        }
+    } 
     
 `
 
